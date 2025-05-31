@@ -5,11 +5,11 @@ FROM rstudio/plumber:latest
 WORKDIR /app
 
 # Copy model and API script into container
-COPY model-api/recall_model.rds/app/
-COPY model-api/plumber.R/app/
+COPY model-api/recall_model.rds /app/
+COPY model-api/plumber.R /app/
 
 # Expose Plumber port
 EXPOSE 8000
 
 # Command to run the API
-CMD ["R", "-e", "pr <- plumber::plumb(\"/app/plumber.R\"); pr$run(host = \"0.0.0.0\", port=8000)"]
+CMD ["R", "-e", "pr <- plumber::plumb('/app/plumber.R'); pr$run(host='0.0.0.0', port=8000)"]
