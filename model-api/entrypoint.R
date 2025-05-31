@@ -1,4 +1,5 @@
-# entrypoint.R
+# model-api/entrypoint.R
+
 library(plumber)
 
 pr <- plumber::plumb("/app/plumber.R")
