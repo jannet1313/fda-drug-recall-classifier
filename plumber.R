@@ -1,23 +1,18 @@
-# model-api/plumber.R
-
 library(plumber)
-library(tibble)
-library(jsonlite)
 
-# Load the trained model
+# Load model
 model <- readRDS("recall_model.rds")
 
-#* @apiTitle FDA Recall Severity Prediction API
-
-#* Predict recall classification from a reason
+# Define API
 #* @post /predict
-function(req) {
-  body <- fromJSON(req$postBody)
-  reason_input <- body$reason
-  
-  input_df <- tibble(reason_for_recall = reason_input)
-  pred <- predict(model, input_df, type = "prob")
-  
-  return(pred)
+function(req, res) {
+  input <- req$body$reason
+  pred <- predict(model, data.frame(reason = input), type = "response")
+  return(list(prediction = pred))
 }
 
+# Launch API only if run directly
+if (interactive() || identical(Sys.getenv("RUN_PLUMBER"), "TRUE")) {
+  pr <- plumb("plumber.R")
+  pr$run(host = "0.0.0.0", port = 8000)
+}
