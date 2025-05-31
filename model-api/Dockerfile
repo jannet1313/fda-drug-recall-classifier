@@ -1,11 +1,15 @@
-FROM rocker/plumber
+# Use a working RStudio Plumber image
+FROM rstudio/plumber:latest
 
-# Copy API files into container
-COPY plumber.R /plumber.R
-COPY recall_model.rds /recall_model.rds
+# Create app directory
+WORKDIR /app
 
-# Expose the port that the API will listen on
+# Copy model and API script into container
+COPY model-api/recall_model.rds /app/
+COPY model-api/plumber.R /app/
+
+# Expose Plumber port
 EXPOSE 8000
 
-# Start the Plumber API
-CMD ["R", "-e", "pr <- plumber::plumb('/plumber.R'); pr$run(host='0.0.0.0', port=8000)"]
+# Command to run the Plumber API
+CMD ["R", "-e", "pr <- plumber::plumb('/app/plumber.R'); pr$run(host='0.0.0.0', port=8000)"]
