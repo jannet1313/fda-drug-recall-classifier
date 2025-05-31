@@ -1,14 +1,18 @@
 # plumber.R
 
 library(plumber)
+library(tidymodels)
 
-model <- readRDS("/app/recall_model.rds")
+model <- readRDS("recall_model.rds")
 
-#* Predict recall severity
 #* @post /predict
 #* @param reason The reason for recall
 #* @serializer unboxedJSON
-predict_recall <- function(reason) {
-  pred <- predict(model, data.frame(reason = reason), type = "response")
-  list(severity = pred)
+function(reason) {
+  # Wrap input in a tibble as expected by tidymodels workflows
+  input <- tibble(reason = reason)
+  
+  # Predict using the workflow
+  pred <- predict(model, input)  # returns a tibble
+  list(severity = pred$.pred_class)
 }
