@@ -1,18 +1,14 @@
+# plumber.R
+
 library(plumber)
 
-# Load model
-model <- readRDS("recall_model.rds")
+model <- readRDS("/app/recall_model.rds")
 
-# Define API
+#* Predict recall severity
 #* @post /predict
-function(req, res) {
-  input <- req$body$reason
-  pred <- predict(model, data.frame(reason = input), type = "response")
-  return(list(prediction = pred))
-}
-
-# Launch API only if run directly
-if (interactive() || identical(Sys.getenv("RUN_PLUMBER"), "TRUE")) {
-  pr <- plumb("plumber.R")
-  pr$run(host = "0.0.0.0", port = 8000)
+#* @param reason The reason for recall
+#* @serializer unboxedJSON
+predict_recall <- function(reason) {
+  pred <- predict(model, data.frame(reason = reason), type = "response")
+  list(severity = pred)
 }

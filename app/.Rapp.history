@@ -1,0 +1,5 @@
+Sys.getenv("COMMAND_MODE")
+cat("Hello World!", "\n")
+setwd("~/Desktop/fda-drug-recall-classifier")
+source("app/app.R")
+runApp("app")
