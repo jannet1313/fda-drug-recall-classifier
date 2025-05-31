@@ -5,8 +5,8 @@ FROM rstudio/plumber:latest
 WORKDIR /app
 
 # Copy model and API script into container
-COPY model-api/recall_model.rds /app/
-COPY model-api/plumber.R /app/
+COPY model-api/recall_model.rds/app/
+COPY model-api/plumber.R/app/
 
 # Expose Plumber port
 EXPOSE 8000
