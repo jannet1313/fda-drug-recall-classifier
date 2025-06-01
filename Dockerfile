@@ -1,7 +1,7 @@
 FROM rstudio/plumber:latest
 
 # Install required R packages
-RUN R -e "install.packages(c('tidymodels', 'textrecipes', 'themis', 'hardhat', 'jsonlite'), repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages(c('tidymodels', 'textrecipes', 'themis', 'hardhat', 'tokenizers', 'text2vec', 'jsonlite'), repos='http://cran.rstudio.com/')"
 
 # Set working directory in the container
 WORKDIR /app
