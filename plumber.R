@@ -1,5 +1,3 @@
-# plumber.R
-
 library(plumber)
 library(tidymodels)
 
@@ -13,10 +11,11 @@ model <- readRDS("recall_model.rds")
 function(reason) {
   new_data <- tibble(reason_for_recall = reason)
   
-  # Use hardhat to preprocess input with model's blueprint
-  processed <- hardhat::forge(new_data, blueprint = model$pre$mold$blueprint)
+  # Extract and bake with the original recipe
+  recipe <- model$pre$actions$recipe$recipe
+  processed <- bake(recipe, new_data)
   
-  pred <- predict(model, processed$predictors, type = "response")
+  pred <- predict(model, processed, type = "response")
   
   list(severity = pred[[1]])
 }
