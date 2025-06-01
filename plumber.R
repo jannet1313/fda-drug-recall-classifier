@@ -1,15 +1,20 @@
-# plumber.R
-
 library(plumber)
 library(tidymodels)
 
-model <- readRDS("/app/recall_model.rds")
+# Load the trained workflow
+model <- readRDS("recall_model.rds")
 
+#* Predict recall severity from reason
 #* @post /predict
 #* @param reason The reason for recall
 #* @serializer unboxedJSON
 function(reason) {
-  input <- data.frame(reason = reason)
-  pred <- predict(model, input)
-  list(severity = pred$.pred_class[1])
+  # Match expected column name from blueprint
+  new_data <- tibble(reason_for_recall = reason)
+  
+  # Make prediction
+  pred <- predict(model, new_data, type = "class")
+  
+  # Return as JSON
+  list(severity = pred[[1]])
 }
