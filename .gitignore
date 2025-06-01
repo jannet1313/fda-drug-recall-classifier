@@ -1,0 +1,13 @@
+# macOS system files
+.DS_Store
+
+# RStudio files
+.RData
+.Rhistory
+.Rproj.user/
+
+# Local testing or development-only files
+run-local.R
+
+# VS Code settings (optional)
+.vscode/
