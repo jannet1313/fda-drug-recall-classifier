@@ -1,18 +1,17 @@
 # plumber.R
 
 library(plumber)
-library(tidymodels)
 
-model <- readRDS("recall_model.rds")
+# Load model at the top-level only if not already loaded
+if (!exists("model")) {
+  model <- readRDS("/app/recall_model.rds")
+}
 
 #* @post /predict
 #* @param reason The reason for recall
 #* @serializer unboxedJSON
 function(reason) {
-  # Wrap input in a tibble as expected by tidymodels workflows
-  input <- tibble(reason = reason)
-  
-  # Predict using the workflow
-  pred <- predict(model, input)  # returns a tibble
-  list(severity = pred$.pred_class)
+  input <- data.frame(reason = reason)
+  pred <- predict(model, input)  # REMOVE type = "response"
+  list(severity = pred$.pred_class)  # Use tidymodels convention
 }
