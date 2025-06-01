@@ -1,7 +1,9 @@
+# plumber.R
+
 library(plumber)
 library(tidymodels)
 
-# Load the trained workflow
+# Load trained workflow
 model <- readRDS("recall_model.rds")
 
 #* Predict recall severity from reason
@@ -9,12 +11,11 @@ model <- readRDS("recall_model.rds")
 #* @param reason The reason for recall
 #* @serializer unboxedJSON
 function(reason) {
-  # Match expected column name from blueprint
-  new_data <- tibble(reason_for_recall = reason)
+  new_data <- tibble(reason_for_recall = reason)  # ⚠️ FIXED column name
   
-  # Make prediction
-  pred <- predict(model, new_data, type = "class")
+  processed <- hardhat::forge(new_data, blueprint = model$pre$mold$blueprint)
   
-  # Return as JSON
+  pred <- predict(model, processed$predictors, type = "response")
+  
   list(severity = pred[[1]])
 }
