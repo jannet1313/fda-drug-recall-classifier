@@ -1,5 +1,8 @@
+# plumber.R
+
 library(plumber)
 library(tidymodels)
+library(textrecipes)  # Needed for tokenization
 
 # Load trained workflow
 model <- readRDS("recall_model.rds")
@@ -11,11 +14,8 @@ model <- readRDS("recall_model.rds")
 function(reason) {
   new_data <- tibble(reason_for_recall = reason)
   
-  # Extract and bake with the original recipe
-  recipe <- model$pre$actions$recipe$recipe
-  processed <- bake(recipe, new_data)
+  # Use predict directly — workflow handles preprocessing
+  prediction <- predict(model, new_data, type = "class")  # or use "prob" if you prefer
   
-  pred <- predict(model, processed, type = "response")
-  
-  list(severity = pred[[1]])
+  list(severity = prediction[[1]])
 }
