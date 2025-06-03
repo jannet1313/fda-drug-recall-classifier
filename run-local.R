@@ -1,0 +1,5 @@
+# run-local.R
+library(plumber)
+
+pr <- plumber::plumb("plumber.R")
+pr$run(host = "127.0.0.1", port = 8000)
