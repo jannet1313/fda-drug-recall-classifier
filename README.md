@@ -53,7 +53,7 @@ The application is deployed in two environments:
 - ** Shiny App (User Interface)**  
   [FDA Recall Classifier App](https://jannetcastaneda.shinyapps.io/fda-drug-recall-classifier/)
 
-- **🔗 RESTful API (via EC2)**  
+- ** RESTful API (via EC2)**  
   `http://3.145.181.209:8000/predict`
 
 **API Example Usage**:
@@ -93,6 +93,6 @@ fda-drug-recall-classifier/
 
 ---
 
-## ✅ Summary
+## Summary
 
 This project demonstrates how **natural language processing (NLP)** and **logistic regression** can classify recall risk from real-world regulatory data. The full pipeline from data acquisition to cloud deployment is reproducible and live.
