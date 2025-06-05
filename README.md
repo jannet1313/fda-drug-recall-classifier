@@ -5,7 +5,7 @@ This project leverages FDA enforcement report data (2012–2024) to build a pred
 
 ---
 
-## 🔍 Exploratory Data Analysis (EDA)
+##  Exploratory Data Analysis (EDA)
 
 The dataset contains ~15,000 drug recall events. Key observations:
 
@@ -32,7 +32,7 @@ Visual tools like word clouds and token frequency plots guided feature engineeri
 
 ---
 
-## 🧠 Modeling Approach
+##  Modeling Approach
 
 - **Model**: Multinomial Logistic Regression (`nnet::multinom`)
 - **Text Features**: TF-IDF of `reason_for_recall`
@@ -46,11 +46,11 @@ The `multinom_reg()` approach improved precision, especially for borderline Clas
 
 ---
 
-## 🚀 Deployment
+##  Deployment
 
 The application is deployed in two environments:
 
-- **🌐 Shiny App (User Interface)**  
+- ** Shiny App (User Interface)**  
   [FDA Recall Classifier App](https://jannetcastaneda.shinyapps.io/fda-drug-recall-classifier/)
 
 - **🔗 RESTful API (via EC2)**  
@@ -64,7 +64,7 @@ curl -X POST http://3.145.181.209:8000/predict \
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 fda-drug-recall-classifier/
@@ -87,11 +87,9 @@ fda-drug-recall-classifier/
 
 ---
 
-## 👩‍💻 Author
+##  Author
 
 **Jannet Castaneda Sanchez**  
-UCLA Master of Applied Statistics and Data Science  
-Deployed June 2025 | [GitHub Repo (Private/Class Submission)](#)
 
 ---
 
