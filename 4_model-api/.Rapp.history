@@ -1,0 +1,5 @@
+load("/Users/jannetcastaneda/Desktop/fda-drug-recall-classifier/4_model-api/recall_model.rds")
+model <- readRDS("/Users/jannetcastaneda/Desktop/fda-drug-recall-classifier/4_model-api/recall_model.rds")
+load("/Users/jannetcastaneda/Desktop/fda-drug-recall-classifier/4_model-api/recall_model.rds")
+load("/Users/jannetcastaneda/Desktop/fda-drug-recall-classifier/4_model-api/recall_model.rds")
+model <- readRDS("/Users/jannetcastaneda/Desktop/fda-drug-recall-classifier/4_model-api/recall_model.rds")

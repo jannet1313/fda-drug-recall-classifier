@@ -1,0 +1,10 @@
+name: fda-recall-classifier
+title: FDA Recall Classifier App
+username: jannetcastaneda
+account: jannetcastaneda
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14856376
+bundleId: 10398559
+url: https://jannetcastaneda.shinyapps.io/fda-recall-classifier/
+version: 1

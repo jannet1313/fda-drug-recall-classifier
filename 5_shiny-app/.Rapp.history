@@ -1,0 +1,8 @@
+Sys.getenv("COMMAND_MODE")
+cat("Hello World!", "\n")
+setwd("~/Desktop/fda-drug-recall-classifier")
+source("app/app.R")
+runApp("app")
+load("/Users/jannetcastaneda/Desktop/fda-drug-recall-classifier/5_shiny-app/recall_model.rds")
+load("/Users/jannetcastaneda/Desktop/fda-drug-recall-classifier/4_model-api/recall_model.rds")
+model <- readRDS("/Users/jannetcastaneda/Desktop/fda-drug-recall-classifier/4_model-api/recall_model.rds")

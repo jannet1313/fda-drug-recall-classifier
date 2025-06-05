@@ -1,0 +1,10 @@
+name: fda-drug-recall-classifier
+title: FDA Drug Recall Classifier - Modeling Report.html
+username: jannetcastaneda
+account: jannetcastaneda
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14883877
+bundleId: 10400088
+url: https://jannetcastaneda.shinyapps.io/fda-drug-recall-classifier/
+version: 1

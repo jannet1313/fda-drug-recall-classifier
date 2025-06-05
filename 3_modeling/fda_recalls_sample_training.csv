@@ -1,0 +1,11 @@
+reason_for_recall,event_classification
+death reported due to contamination,Class I
+risk of death from improper labeling,Class I
+device malfunction leading to patient death,Class I
+life-threatening contamination discovered,Class I
+presence of glass particles in injectable drug,Class I
+incorrect dosage may cause serious injury,Class II
+labeling error may lead to overdose,Class II
+particulate matter found in drug solution,Class II
+mislabeling with potential side effects,Class III
+packaging defect with no health risk,Class III

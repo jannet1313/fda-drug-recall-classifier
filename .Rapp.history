@@ -1,0 +1,2 @@
+load("/Users/jannetcastaneda/Desktop/fda-drug-recall-classifier/recall_model.rds")
+load("/Users/jannetcastaneda/Desktop/fda-drug-recall-classifier/recall_model.rds")
